@@ -1,6 +1,6 @@
 FROM alpine
-RUN apk add --no-cache composer php-dom php-tokenizer
-ENV COMPOSER_IGNORE_PLATFORM_REQS=1
+RUN apk add --no-cache composer npm php-dom php-tokenizer
 WORKDIR /app
-ENTRYPOINT ["composer"]
-CMD ["install"]
+ENV COMPOSER_IGNORE_PLATFORM_REQS=1
+ENV HOME=/tmp
+CMD composer i && npm ci
